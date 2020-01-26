@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html amp lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
-  @include('layout.head')
-
+  @include('layoutxeral.head')
+  <title>Dietista a domicilio - Ciente</title>
 </head>
 
 <body id="page-top">
@@ -12,15 +12,13 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    @include('layout.sidebar')
+    @include('layoutcliente.sidebar')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
       <div id="content">
-
-          @include('layout.navbar')
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -30,7 +28,7 @@
         </div>
         <!-- /.container-fluid -->
 
-      @include('layout.footer')
+      @include('layoutxeral.footer')
       </div>
       <!-- End of Main Content -->
 
@@ -41,7 +39,7 @@
   </div>
   <!-- End of Page Wrapper -->
 
-    @include('layout.js')
+    @include('layoutxeral.js')
     
 </body>
 
