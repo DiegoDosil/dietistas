@@ -11,11 +11,14 @@
 |
 */
 Route::get('/', function () {return view('welcome');});
-Route::get('ingresoincorrecto', function () {return view('ingresoincorrecto');});
-Route::get('/admin/admin', function () {return view('admin/admin');});
-Route::get('/admin', function () {return view('admin/admin');});
+Route::get('/admin', 'UsuarioController@consultardietistas');
 Route::get('/admin/creardietista', function () {return view('admin/creardietista');});
-//Route::get('/admin/creardietista', 'PaxinasController@envia_crear_dietista');
+Route::get('/admin/admin', 'UsuarioController@consultardietistas');
+Route::get('/admin/activardietista', 'UsuarioController@activardietista');
+Route::get('/admin/eliminardietista', 'UsuarioController@eliminardietista');
+Route::get('ingresoincorrecto', function () {return view('ingresoincorrecto');});
 Route::post('/', 'UsuarioController@login_usuario');
 Route::post('/admin/creardietista', 'UsuarioController@store');
+Route::post('/admin/activardietista', 'UsuarioController@activarusuario');
+Route::post('/admin/eliminardietista', 'UsuarioController@eliminarusuario');
 Route::fallback(function () {return view('ingresoincorrecto');});

@@ -17,6 +17,8 @@ class CreateUsuarioalteracionsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('usuario_id');
             $table->integer('alteracion_id');
+            $table->timestamp('updated_at')->nullable();            
+            $table->timestamp('created_at')->nullable();            
         });
     }
 

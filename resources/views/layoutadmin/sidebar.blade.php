@@ -30,8 +30,8 @@
             <!--<h6 class="collapse-header">Custom Components:</h6>-->
             <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/admin/admin">Consultar</a>
             <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/admin/creardietista">Crear</a>
-            <a class="collapse-item" href="#">Eliminar</a>
-            <a class="collapse-item" href="#">Activar/desactivar</a>
+            <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/admin/activardietista">Activar/desactivar</a>
+            <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/admin/eliminardietista">Eliminar</a>
           </div>
         </div>
       </li>

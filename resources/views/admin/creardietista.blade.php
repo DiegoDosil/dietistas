@@ -10,6 +10,9 @@ if (isset($_SESSION['dependencia'])) {
       }
 if(!$ok){return view('ingresoincorrecto');}
 @endphp
+@if ( session('mensaxe') )
+   <script>alertify.success("{{ session('mensaxe') }}");</script>
+@endif
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">

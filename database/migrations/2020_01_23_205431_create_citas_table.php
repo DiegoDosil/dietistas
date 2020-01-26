@@ -30,6 +30,8 @@ class CreateCitasTable extends Migration
             $table->integer('pcmedcadera');
             $table->integer('pcmedcintura');
             $table->integer('pcmedpeito');
+            $table->timestamp('updated_at')->nullable();            
+            $table->timestamp('created_at')->nullable();            
         });
     }
 

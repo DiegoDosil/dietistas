@@ -16,6 +16,8 @@ class CreateAlteracionsTable extends Migration
         Schema::create('alteracions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->unique();
+            $table->timestamp('updated_at')->nullable();            
+            $table->timestamp('created_at')->nullable();            
         });
     }
 

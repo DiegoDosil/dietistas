@@ -34,7 +34,7 @@ class UsuarioController extends Controller
         $usu->dependencia=$request->dependencia;
         $usu->activado=$request->activado;
         $usu->save();
-        return back()->with('mensaxe',"Usuario creado");
+        return back()->with('mensaxe',"Usuario creado correctamente");
     }
 
     /**
@@ -127,11 +127,52 @@ class UsuarioController extends Controller
             $_SESSION['activado']  = $usuario->activado;
             if(($usuario->dependencia)=="0")
             	{
-            	$dietistas=DB::table('usuarios')->where('dependencia', "1");
-            	//return view('/admin/admin', compact('usuario'));
-            	return view('/admin/admin')->with(compact('usuario'))->with(compact('dietistas'));
+            	//$dietistas=DB::table('usuarios')->where('dependencia', "1");
+                $usuarios=Usuario::all();
+                //$_SESSION['dietistas']=$dietistas;
+            	return view('/admin/admin', compact('usuarios'));
+            	//return view('/admin/admin')->with(compact('usuario'))->with(compact('dietistas'));
             	} 
             }
+    }
+    public function consultardietistas()
+    {
+       $usuarios=Usuario::all();
+       return view('/admin/admin', compact('usuarios'));
+    }
+    public function activardietista()
+    {
+       $usuarios=Usuario::all();
+       return view('/admin/activardietista', compact('usuarios'));
+    }
+    public function activarusuario(Request $request)
+    {
+       $novoValor=1;
+       $mensaxe="Usuario activado";
+       $usuario=DB::table('usuarios')->where('id', $request->id)->first();
+       if($usuario->activado!=0)
+        {
+        $novoValor=0;
+        $mensaxe="Usuario desactivado";
+        }
+       DB::table('usuarios')
+            ->where('id', $request->id)
+            ->update(['activado' => $novoValor]);
+       return back()->with('mensaxe',$mensaxe);
+    }
+    public function eliminardietista()
+    {
+       $usuarios=Usuario::all();
+       return view('/admin/eliminardietista', compact('usuarios'));
+    }
+    public function eliminarusuario(Request $request)
+    {
+       $mensaxe="Usuario borrado";
+       $usuario=DB::table('usuarios')->where('id', $request->id)->first();
+       DB::table('usuarios')
+            ->where('id', $request->id)
+            ->delete();
+       return back()->with('mensaxe',$mensaxe);
     }
     
 }

@@ -19,9 +19,11 @@ class CreateUsuariosTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('direccion');
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->integer('dependencia');
             $table->boolean('activado');
+			$table->timestamp('updated_at')->nullable();            
+			$table->timestamp('created_at')->nullable();            
         });
     }
 

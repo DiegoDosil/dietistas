@@ -31,6 +31,8 @@ class CreateDietasTable extends Migration
             $table->integer('poliinsat');
             $table->integer('hidratoscarbono');
             $table->integer('colesterol');
+            $table->timestamp('updated_at')->nullable();            
+            $table->timestamp('created_at')->nullable();            
         });
     }
 

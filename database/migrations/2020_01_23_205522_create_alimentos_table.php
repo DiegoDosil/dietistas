@@ -18,6 +18,8 @@ class CreateAlimentosTable extends Migration
             $table->string('nome');
             $table->integer('dieta_id');
             $table->integer('cantidade');
+            $table->timestamp('updated_at')->nullable();            
+            $table->timestamp('created_at')->nullable();            
         });
     }
 
