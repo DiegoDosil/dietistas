@@ -15,6 +15,12 @@
                 @if ( session('mensaxe') )
                     <script>alertify.error("{{ session('mensaxe') }}");</script>
                 @endif
+                @php
+                if(!(session_status() !== PHP_SESSION_ACTIVE)) {
+                    session_unset();
+                    session_destroy();
+                }
+                @endphp
             </div>
         </div>
     @component('components.c_contacto')

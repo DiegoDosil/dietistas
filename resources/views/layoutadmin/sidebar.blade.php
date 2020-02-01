@@ -22,7 +22,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          </i><i class="fas fa-users"></i>
           <span>Dietistas</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -35,6 +35,13 @@
           </div>
         </div>
       </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-brand-text mx-3">
+          <a class="nav-link" href="http://softuare.sytes.net/dietistas/public/">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+          </a>
+      </div>
 
     </ul>
     <!-- End of Sidebar -->

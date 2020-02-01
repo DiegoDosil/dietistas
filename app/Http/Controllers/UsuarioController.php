@@ -127,12 +127,19 @@ class UsuarioController extends Controller
             $_SESSION['activado']  = $usuario->activado;
             if(($usuario->dependencia)=="0")
             	{
-            	//$dietistas=DB::table('usuarios')->where('dependencia', "1");
                 $usuarios=Usuario::all();
-                //$_SESSION['dietistas']=$dietistas;
             	return view('/admin/admin', compact('usuarios'));
-            	//return view('/admin/admin')->with(compact('usuario'))->with(compact('dietistas'));
             	} 
+            if(($usuario->dependencia)=="1")
+                {
+                $usuarios=Usuario::all();
+                return view('/dietista/dietista', compact('usuarios'));
+                } 
+            if(($usuario->dependencia)!="0" && ($usuario->dependencia)!="1")
+                {
+                $usuarios=Usuario::all();
+                return view('/cliente/cliente', compact('usuarios'));
+                } 
             }
     }
     public function consultardietistas()
@@ -174,5 +181,22 @@ class UsuarioController extends Controller
             ->delete();
        return back()->with('mensaxe',$mensaxe);
     }
+    public function consultarclientes()
+    {
+       $usuarios=Usuario::all();
+       return view('/dietista/dietista', compact('usuarios'));
+    }
+    public function activarcliente()
+    {
+       $usuarios=Usuario::all();
+       return view('/dietista/activarcliente', compact('usuarios'));
+    }
+    public function eliminarcliente()
+    {
+       $usuarios=Usuario::all();
+       return view('/dietista/eliminarcliente', compact('usuarios'));
+    }
+
+
     
 }

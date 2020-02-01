@@ -16,6 +16,7 @@
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
+    @include('layoutxeral.navbar')
 
       <!-- Main Content -->
       <div id="content">

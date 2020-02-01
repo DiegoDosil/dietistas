@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cita;
+use App\Usuario;
 use Illuminate\Http\Request;
 
 class CitaController extends Controller
@@ -35,7 +36,18 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*TODO: VALIDACIÓNS*/
+        $cita=new Cita;
+        $cita->hora=$request->hora;
+        $cita->fecha=$request->fecha;
+        $cita->estado=$request->estado;
+        $cita->localizacion=$request->localizacion;
+        $cita->observacions=$request->observacions;
+        $cita->dietista_id=$request->dietista_id;
+        $cita->idcliente=$request->idcliente;
+        $cita->save();
+        return back()->with('mensaxe',"Cita creada");
+
     }
 
     /**
@@ -82,4 +94,18 @@ class CitaController extends Controller
     {
         //
     }
+    public function consultarcitas()
+    {
+       $citas=Cita::all();
+       $usuarios=Usuario::all();
+       return view('/dietista/consultarcitas', compact('citas'), compact('usuarios'));
+    }
+    public function crearcitas()
+    {
+       $citas=Cita::all();
+       $usuarios=Usuario::all();
+       return view('/dietista/crearcitas', compact('citas'), compact('usuarios'));
+    }
+
+
 }
