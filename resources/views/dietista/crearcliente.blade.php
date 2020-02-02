@@ -6,7 +6,7 @@
 if(session_status() !== PHP_SESSION_ACTIVE) {session_start();}
 $ok=false;
 if (isset($_SESSION['dependencia'])) {
-   if($_SESSION['dependencia']=="1"){$ok=true;}
+   if($_SESSION['dependencia']=="1" && $_SESSION['activado']!="0"){$ok=true;}
       }
 if(!$ok){return view('ingresoincorrecto');}
 @endphp

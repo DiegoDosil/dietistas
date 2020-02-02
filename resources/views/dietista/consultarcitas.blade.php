@@ -5,7 +5,7 @@
 if(session_status() !== PHP_SESSION_ACTIVE) {session_start();}
 $ok=false;
 if (isset($_SESSION['dependencia'])) {
-    if($_SESSION['dependencia']=="1"){$ok=true;}
+    if($_SESSION['dependencia']=="1" && $_SESSION['activado']!="0"){$ok=true;}
 }
 if(!$ok){return view('ingresoincorrecto');}
 @endphp
@@ -13,6 +13,8 @@ if(!$ok){return view('ingresoincorrecto');}
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Listado de citas</h6>
     </div>
+@component('components.c_filtrado_citas')
+@endcomponent
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -30,7 +32,7 @@ if(!$ok){return view('ingresoincorrecto');}
             @if (count($citas) > 0)
                 @foreach ($citas as $cita)
                     @if($cita->dietista_id === $_SESSION['id'])
-                    <tr>
+                    <tr class="{{ $cita->estado }}">
                       <td>{{ $cita->estado }}</td>
                       <td>
                         @foreach ($usuarios as $usuario)

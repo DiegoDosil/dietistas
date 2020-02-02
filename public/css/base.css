@@ -30,3 +30,10 @@ html, body {
     text-transform: uppercase;
 }
 .m-b-md {margin-bottom: 30px;}
+.elemento_unico{
+    color: #f8f9fc;
+    font-size: .85rem;
+}.elemento_unico:hover{
+    color: #fff;
+    font-size: .85rem;
+}

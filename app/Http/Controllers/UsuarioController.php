@@ -116,30 +116,35 @@ class UsuarioController extends Controller
         if(!$valido){return back()->with('mensaxe',"Credenciais incorrectas");}
         else
             {
-            if(isset($_SESSION['id'])){session_unset();}
-            session_start();
-            $_SESSION['id']  = $usuario->id;
-            $_SESSION['nome']  = $usuario->nome;
-            $_SESSION['email']  = $usuario->email;
-            $_SESSION['direccion']  = $usuario->direccion;
-            $_SESSION['telefono']  = $usuario->telefono;
-            $_SESSION['dependencia']  = $usuario->dependencia;
-            $_SESSION['activado']  = $usuario->activado;
-            if(($usuario->dependencia)=="0")
-            	{
-                $usuarios=Usuario::all();
-            	return view('/admin/admin', compact('usuarios'));
-            	} 
-            if(($usuario->dependencia)=="1")
+            if($usuario->activado==0)
+                {return back()->with('mensaxe',"O usuario non está activo");}
+            else
                 {
-                $usuarios=Usuario::all();
-                return view('/dietista/dietista', compact('usuarios'));
-                } 
-            if(($usuario->dependencia)!="0" && ($usuario->dependencia)!="1")
-                {
-                $usuarios=Usuario::all();
-                return view('/cliente/cliente', compact('usuarios'));
-                } 
+                if(isset($_SESSION['id'])){session_unset();}
+                session_start();
+                $_SESSION['id']  = $usuario->id;
+                $_SESSION['nome']  = $usuario->nome;
+                $_SESSION['email']  = $usuario->email;
+                $_SESSION['direccion']  = $usuario->direccion;
+                $_SESSION['telefono']  = $usuario->telefono;
+                $_SESSION['dependencia']  = $usuario->dependencia;
+                $_SESSION['activado']  = $usuario->activado;
+                if(($usuario->dependencia)=="0")
+            	   {
+                    $usuarios=Usuario::all();
+            	   return view('/admin/admin', compact('usuarios'));
+            	   } 
+                if(($usuario->dependencia)=="1")
+                    {
+                    $usuarios=Usuario::all();
+                    return view('/dietista/dietista', compact('usuarios'));
+                    } 
+                if(($usuario->dependencia)!="0" && ($usuario->dependencia)!="1")
+                    {
+                    $usuarios=Usuario::all();
+                    return view('/cliente/cliente', compact('usuarios'));
+                    } 
+                }
             }
     }
     public function consultardietistas()

@@ -24,5 +24,14 @@
             </div>
         </div>
     @component('components.c_contacto')
+        @slot('contactotel')
+        34664063304
+        @endslot
+        @slot('contactowa')
+        34664063304
+        @endslot
+        @slot('contactomail')
+        treintadeltres@yahoo.es
+        @endslot
     @endcomponent
 @endsection

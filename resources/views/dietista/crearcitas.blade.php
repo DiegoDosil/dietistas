@@ -6,7 +6,7 @@
 if(session_status() !== PHP_SESSION_ACTIVE) {session_start();}
 $ok=false;
 if (isset($_SESSION['dependencia'])) {
-   if($_SESSION['dependencia']=="1"){$ok=true;}
+   if($_SESSION['dependencia']=="1" && $_SESSION['activado']!="0"){$ok=true;}
       }
 if(!$ok){return view('ingresoincorrecto');}
 @endphp
@@ -71,7 +71,7 @@ if(!$ok){return view('ingresoincorrecto');}
             </div>
             <div class="form-group">
                 <label for="observacions">Observacións</label>
-                <input type="text" class="form-control" name="observacions" id="observacions" aria-describedby="observaHelp" required>
+                <input type="text" class="form-control" name="observacions" id="observacions" aria-describedby="observaHelp">
                 <small id="observaHelp" class="form-text text-muted">Introduza aquí as observacións que desexe acerca da cita.</small>
             </div>
             <input id="dietista_id" type="hidden" name="dietista_id" value="{{ $_SESSION['id'] }}">
