@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Usuario;
+use App\Cita;
+use App\Alteracion;
+use App\Usuarioalteracion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,8 +57,12 @@ class UsuarioController extends Controller
         $usu->telefono=$request->telefono;
         $usu->dependencia=$request->dependencia;
         $usu->activado=$request->activado;
-        $usu->save();
-        return back()->with('mensaxe',"Usuario creado");
+        if($this::validaUsuario($usu))
+            {
+            $usu->save();
+            return back()->with('mensaxe',"Usuario creado");
+            }
+        else{return back()->with('mensaxe',"Erro nos datos introducidos. O usuario non foi creado");}
     }
 
     /**
@@ -141,8 +148,12 @@ class UsuarioController extends Controller
                     } 
                 if(($usuario->dependencia)!="0" && ($usuario->dependencia)!="1")
                     {
-                    $usuarios=Usuario::all();
-                    return view('/cliente/cliente', compact('usuarios'));
+                    $citas=Cita::all();
+                    $dietista=new Usuario;
+                    $dietista=DB::table('usuarios')->where('id', $usuario->dependencia)->first();
+                    $_SESSION['dietista_email']  = $dietista->email;
+                    $_SESSION['dietista_telefono']  = $dietista->telefono;
+                    return view('/cliente/cliente', compact('citas'));
                     } 
                 }
             }
@@ -201,7 +212,56 @@ class UsuarioController extends Controller
        $usuarios=Usuario::all();
        return view('/dietista/eliminarcliente', compact('usuarios'));
     }
-
+    public function creacliente(Request $request)
+    {
+        /*TODO: VALIDACIÓNS*/
+        $usu=new Usuario;
+        $usu->nome=$request->nome;
+        $usu->email=$request->email;
+        $usu->password=md5($request->password);
+        $usu->direccion=$request->direccion;
+        $usu->telefono=$request->telefono;
+        $usu->dependencia=$request->dependencia;
+        $usu->activado=$request->activado;
+        if($this::validaUsuario($usu))
+        {
+        $usu->save();
+        if(isset($request->alteracions))
+            {
+            $array=$request->alteracions;
+            for($i=0;$i<count($array);$i++)
+                {
+                $novousu=new Usuario;
+                $novousu=Usuario::where('nome', '=', $request->nome)->first();
+                $usualt=new Usuarioalteracion;
+                $usualt->usuario_id=$novousu->id;
+                $usualt->alteracion_id=$array[$i];
+                $usualt->save();
+                }
+            }
+        return back()->with('mensaxe',"Usuario creado");
+        }
+        else{return back()->with('mensaxe',"Erro nos datos introducidos. O usuario non foi creado");}
+    }
+    public function crearclientes()
+    {
+        $alteracions=Alteracion::all();
+        return view('/dietista/crearcliente', compact('alteracions'));
+    }
+    public function validaUsuario(Usuario $usuario)
+    {
+        $correcto=true;
+        if((empty($usuario->nome)) || (strlen($usuario->nome)<6)){$correcto=false;}
+        if(empty($usuario->email)){$correcto=false;}
+        if(empty($usuario->password) || strlen($usuario->password)<8){$correcto=false;}
+        if(empty($usuario->direccion)){$correcto=false;}
+        if(empty($usuario->telefono)){$correcto=false;}
+        else
+            {
+            if((strlen($usuario->telefono)<9) || strlen($usuario->telefono)>12 || !(is_numeric($usuario->telefono))){$correcto=false;}    
+            }
+        return $correcto;
+    }
 
     
 }

@@ -11,7 +11,11 @@ if (isset($_SESSION['dependencia'])) {
 if(!$ok){return view('ingresoincorrecto');}
 @endphp
 @if ( session('mensaxe') )
+  @if(session('mensaxe') === 'Usuario creado')
    <script>alertify.success("{{ session('mensaxe') }}");</script>
+  @else
+   <script>alertify.error("{{ session('mensaxe') }}");</script>
+  @endif
 @endif
 
   <!-- DataTales Example -->

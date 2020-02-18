@@ -181,16 +181,23 @@ class CitaController extends Controller
     }
 public function amosarevolucion()
     {
-       //$citas=DB::table('citas')->where('estado', "Completa");
       $citas = DB::table('citas')
                 ->orderBy('fecha', 'asc')
                 ->get();
        $usuarios=Usuario::all();
-       //$citas=Cita::all();
        return view('/dietista/evolucion', compact('citas'), compact('usuarios'));
-/*       $citas=Cita::all();
-       $usuarios=Usuario::all();
-       return view('/dietista/evolucion', compact('citas'), compact('usuarios'));*/
+    }
+public function clienteconsultarcitas()
+    {
+      $citas=Cita::all();
+      return view('/cliente/cliente', compact('citas'));
+    }    
+public function clienteevolucion()
+    {
+      $citas = DB::table('citas')
+                ->orderBy('fecha', 'asc')
+                ->get();
+       return view('/cliente/evolucion', compact('citas'));
     }
 
 }

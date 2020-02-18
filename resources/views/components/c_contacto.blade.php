@@ -1,9 +1,6 @@
 <!--Inicio contacto-->
-<div id="dd_bocadillo" class="dereita"></div>
 <div id="contedor" class="dereita">
     <span id="dd_auxhorizontal" class="20"></span>
-    <span id="dd_auxbocadillo" class="Contáctanos"></span>
-    <!--<span id="dd_auxcorbocadillo" class="grey"></span>-->
     <span id="dd_auxsegspopup" class="2"></span>
     <img id="contacto" src="img/imaxe_contactar.png" />
     <a id='dd_telef' href="tel:{{$contactotel}}" target="_blank">

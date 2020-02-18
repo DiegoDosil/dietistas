@@ -3,10 +3,11 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                    Proba para o proxecto
+                    DietLar
             </div>
             <div>
-                <p>Aquí incluiremos o contido estático da páxina de inicio</p>
+                <h2>A aplicación para profesionais da dietética e nutrición.</h2>
+                <p>A aplicación CRM que mellora a xestión e atención do cliente</p>
             </div>
             <div class="links">
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#logindiv" aria-expanded="false" aria-controls="collapseExample">Iniciar sesión</button>

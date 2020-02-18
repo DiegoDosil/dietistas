@@ -22,10 +22,10 @@
    <link href="http://softuare.sytes.net/dietistas/public/css/alertify.default.css" rel="stylesheet" />
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" /> 
    <script async type="text/javascript" src="http://softuare.sytes.net/dietistas/public/js/alertify.min.js"></script>        
-   <script async type="text/javascript" src="http://softuare.sytes.net/dietistas/public/js/Chart.js"></script>        
-   <script async type="text/javascript" src="http://softuare.sytes.net/dietistas/public/js/Chart.bundle.js"></script>
+   <script type="text/javascript" src="http://softuare.sytes.net/dietistas/public/js/Chart.js"></script>        
+   <script type="text/javascript" src="http://softuare.sytes.net/dietistas/public/js/Chart.bundle.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
-   <script async src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
    <script type="text/javascript" src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
    <style type="text/css">

@@ -1,7 +1,7 @@
+    <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
-          <!--<i class="fas fa-laugh-wink"></i>-->
         </div>
         <div class="sidebar-brand-text mx-3">@php
         echo $_SESSION['nome'];
@@ -52,6 +52,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/dietista/consultardietas">Consultar</a>
             <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/dietista/creardietas">Crear</a>
+            <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/dietista/cambiarestadodietas">Cambiar estado</a>
+            <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/dietista/engadiralimento">Engadir alimentos</a>
             <a class="collapse-item" href="http://softuare.sytes.net/dietistas/public/dietista/asignardietas">Asignar</a>
           </div>
         </div>

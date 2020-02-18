@@ -13,6 +13,7 @@
   <div class="form-group">
     <label for="password">Contrasinal</label>
     <input type="password" class="form-control" name="password" id="password" placeholder="Contrasinal" required>
+    <small id="passwordHelp" class="form-text text-muted">Introduza o contrasinal (mínimo 8 caracteres).</small>
   </div>
   <div class="form-group">
     <label for="nome">Dirección</label>
